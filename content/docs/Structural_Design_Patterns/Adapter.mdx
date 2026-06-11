@@ -532,29 +532,17 @@ Reuse legacy code without modification.
 
 
 ```mermaid
+
 flowchart TD
-    Start([Client needs to call Target.request()])
-    Client[Client] -->|holds reference to Adapter| AdapterObj[Adapter instance]
-    AdapterObj -->|implements Target interface| CallRequest[Call request() on Adapter]
-    
-    CallRequest --> Translate[Adapter translates request()\nto Adaptee.specificRequest()]
-    Translate --> Delegate[Adapter delegates call to Adaptee]
-    Delegate --> AdapteeExec[Adaptee executes specificRequest()]
-    
-    AdapteeExec --> Return[Result returned to Adapter]
-    Return --> ClientResult[Client receives result as expected from Target]
-    ClientResult --> End([Done])
-    
-    subgraph Legend [Legend]
-        direction LR
-        L1[Client] --> L2[Adapter]
-        L2 --> L3[Adaptee]
-    end
-    
-    style Client fill:#e1f5fe
-    style AdapterObj fill:#c8e6c9
-    style AdapteeExec fill:#ffe0b2
-    style Translate fill:#fff9c4
+
+A[Client]
+B[Adapter]
+C[Adaptee]
+
+A -->|Calls Target Method| B
+B -->|Converts Request| C
+C -->|Executes Operation| B
+B -->|Returns Result| A
 ```
 
 
