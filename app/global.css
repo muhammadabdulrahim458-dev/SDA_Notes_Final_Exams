@@ -12,5 +12,5 @@ html > body[data-scroll-locked] {
 }
 
 body::selection{
-  background-color: aquamarine;
+  background-color: rgba(255, 210, 127, 0.516);
 }

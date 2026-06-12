@@ -1,0 +1,52 @@
+---
+title: Data Flow Architectural Style
+description: Your first document
+---
+
+## Definition
+Data flow architecture is a style where **data enters the system and flows through a series of processing components** one after another until it reaches output or a data store.
+
+## Goal
+High modifiability and reusability – subsystems are independent.
+
+## Two Main Sub‑categories
+
+### 1. Batch Sequential
+- Data processed as a **whole batch** from one step to the next.
+- **Step 2 cannot start** until Step 1 finishes completely.
+- **No concurrency** – high latency, no user interaction.
+- **Example:** Banking batch processing, payroll, utility billing.
+
+### 2. Pipe‑and‑Filter
+- Data flows as a **stream** (incremental).
+- **Filters** process data; **pipes** connect them.
+- **Concurrent execution** – filters run in parallel.
+- **Example:** Unix command line (`cat file | grep "error" | wc -l`).
+
+## Quick Comparison
+
+| Feature | Batch Sequential | Pipe‑and‑Filter |
+|---------|------------------|------------------|
+| Data unit | Whole batch | Stream (incremental) |
+| Concurrency | No | Yes |
+| Latency | High | Low |
+| User interaction | No | Possible but rare |
+| Storage | Intermediate files | Small buffers (pipes) |
+
+## Advantages of Data Flow (General)
+- Simple to understand
+- Independent, reusable components
+- Easy to modify one step without affecting others
+
+## Disadvantages
+- Static pipeline (hard to reconfigure at runtime)
+- Not ideal for interactive applications
+- Error handling can be difficult
+
+## Exam Keywords
+Data flow, batch sequential, pipe‑and‑filter, stream, concurrent, incremental, filter, pipe.
+
+<Callout type="success">
+  **Remember:** Data flow = data moves through processing steps. Batch = whole batch, sequential. Pipe‑and‑filter = streaming, concurrent.
+</Callout>
+

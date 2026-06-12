@@ -1,0 +1,4 @@
+{
+  "title": "Architectural Styles",
+  "pages": ["DataFlowArchitecturalStyle", "Batchsequential","Pipeandfilter","Processcontrol"]
+}
