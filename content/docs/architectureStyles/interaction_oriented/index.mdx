@@ -1,0 +1,96 @@
+---
+title: Interaction‑Oriented Software Architecture 
+description: Your first document
+---
+
+## 1. Definition
+
+### Simple Definition
+Interaction‑oriented architecture focuses on **user interaction** – it separates the user interface, control logic, and data so they can change independently.
+
+### One‑Line Exam Definition
+*“Architecture that separates user interaction from data and control, supporting multiple views and loose coupling.”*
+
+---
+
+## 2. Why Do We Need It?
+
+### The Problem It Solves
+Without separation, changing the UI (e.g., from desktop to web) breaks business logic. Also, showing the same data in different ways (chart + table) is hard.
+
+### Why Was It Created?
+To make interactive applications easier to build, change, and maintain – especially when multiple users or views access the same data.
+
+### What Happens Without It?
+UI code mixed with data code – every change causes ripple effects; reusing logic is impossible.
+
+---
+
+## 3. Real‑World Analogy
+
+**TV remote + TV set + broadcast signal** – remote (control) sends commands, TV (view) displays, signal (data) carries content. Each can change independently.
+
+---
+
+## 4. Two Main Styles (from slides)
+
+| Style | Key Features |
+|-------|--------------|
+| **MVC (Model‑View‑Controller)** | Three modules: Model (data), View (display), Controller (input). All three connected. |
+| **PAC (Presentation‑Abstraction‑Control)** | Hierarchical agent structure. Each agent has its own Presentation, Abstraction, Control. |
+
+---
+
+## 5. Key Terms
+
+| Term | Meaning |
+|------|---------|
+| **Data module** | Stores and manages data (Model). |
+| **Control module** | Handles logic, updates, coordination (Controller). |
+| **View module** | Displays data to user (View). |
+| **Loose coupling** | Changing one module doesn’t break others. |
+
+---
+
+## 6. Comparison – MVC vs PAC (Overview)
+
+| Aspect | MVC | PAC |
+|--------|-----|-----|
+| **Structure** | Flat, three modules connected | Hierarchical agents |
+| **Control flow** | Centralised | Decentralised across agents |
+| **Best for** | Single interactive application | Complex distributed interactive systems |
+
+---
+
+## 7. Quick Revision
+
+### Category
+Interaction‑Oriented Architecture
+
+### Problem
+UI and logic are tangled – hard to maintain and support multiple views.
+
+### Solution
+Separate into data, control, and view modules.
+
+### Key Components
+- Data module
+- Control module
+- View module
+
+### One‑Line Summary
+**Interaction‑oriented = separate UI, logic, and data for clean interactive apps.**
+
+---
+
+<Callout type="info">
+  **Next:** Detailed notes on MVC and PAC.
+</Callout>
+
+
+
+
+
+
+
+
