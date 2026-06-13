@@ -1,4 +1,12 @@
 {
   "title": "Architectural Styles",
-  "pages": ["DataFlowArchitecturalStyle", "Batchsequential","Pipeandfilter","Processcontrol"]
+  "pages": [
+    "DataFlowArchitecturalStyle",
+    "Batchsequential",
+    "Pipeandfilter",
+    "repository",
+    "blackboard",
+    "hierarchical",
+    "distributed"
+  ]
 }
