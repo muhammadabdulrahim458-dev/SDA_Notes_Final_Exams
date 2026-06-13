@@ -1,7 +1,4 @@
 {
-  "title": "Structural Patterns",
-  "pages": [
-    "Adapter",
-    "Composite"
-  ]
+  "title": "Structural Design Patterns",
+  "pages": ["Adapter", "Composite"]
 }

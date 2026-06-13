@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "index",
+    "---Architecture & Design---",
+    "architectureStyles",
+    "Structural_Design_Patterns",
+    "behavioral_design_patterns",
+    "---Additional Lectures---",
+    "lecture14",
+    "---Core Concepts---",
+    "software_framework",
+    "CBSE",
+    "AntiPattern",
+    "OverEngineering"
+  ]
+}

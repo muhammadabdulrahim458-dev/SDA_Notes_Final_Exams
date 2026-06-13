@@ -1,4 +1,10 @@
 {
-  "title": "Hierarchical Architectural Style",
-  "pages": ["mainsubroutine", "masterslave", "Layered", "virtualmachine"]
+  "title": "Hierarchical Architecture",
+  "pages": [
+    "index",
+    "mainsubroutine",
+    "masterslave",
+    "Layered",
+    "virtualmachine"
+  ]
 }

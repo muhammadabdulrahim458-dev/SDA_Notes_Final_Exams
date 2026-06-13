@@ -1,0 +1,4 @@
+{
+  "title": "Distributed Architecture",
+  "pages": ["index", "clientserver", "multi_tier", "soa", "cloudservice"]
+}

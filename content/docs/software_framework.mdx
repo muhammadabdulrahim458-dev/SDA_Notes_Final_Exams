@@ -1,0 +1,270 @@
+---
+title: Software Frameworks
+description: Your first document
+---
+
+## 1. Definition
+
+### Simple Definition
+A framework is a **reusable, semi‑complete application** that provides a skeleton. You fill in the missing parts to create your own custom application.
+
+### One‑Line Exam Definition
+*“A reusable, semi‑complete application with concrete architecture and code, designed to be specialized for specific needs.”*
+
+---
+
+## 2. Why Do We Need Frameworks?
+
+### Problem Without Frameworks
+Every project starts from zero – writing everything yourself, repeating common patterns, wasting time.
+
+### Why Were Frameworks Created?
+To **reuse** design and code across many projects. Frameworks capture the knowledge of experienced developers.
+
+### What Happens Without Frameworks?
+Slow development, inconsistent designs, more bugs.
+
+---
+
+## 3. Framework vs Library – Key Difference
+
+| Aspect | Library | Framework |
+|--------|---------|-----------|
+| **Control** | You call the library | Framework calls you (Inversion of Control) |
+| **Completeness** | Collection of useful functions | Semi‑complete application skeleton |
+| **Flow** | Your code controls flow | Framework controls flow |
+| **Example** | Java Math library | Spring MVC, React |
+
+**Analogy:** Library = toolbox (you pick tools). Framework = house blueprint (you fill rooms, but structure is fixed).
+
+---
+
+## 4. Framework vs Architecture
+
+| Aspect | Software Architecture | Software Framework |
+|--------|----------------------|---------------------|
+| **Abstraction** | Abstract (macro‑architecture) | Concrete implementation |
+| **Target** | Whole system | Specific domain / application type |
+| **Purpose** | Ensure quality, guiding principles | Reusability, specialization |
+| **Example** | Layered architecture | Spring MVC (implements MVC architecture) |
+
+**Relationship:** Frameworks are **concrete implementations** of abstract architectures.
+
+---
+
+## 5. Framework Goals (from slides)
+
+- **Reuse** – code, design, documentation.
+- **Simplify development** – less coding.
+- **Allow inexperienced developers** to build good software.
+- **Extract knowledge** of expert designers.
+
+---
+
+## 6. Key Characteristics of Frameworks
+
+| Characteristic | Meaning |
+|----------------|---------|
+| **Modularity** | Divided into independent parts. |
+| **Reusability** | Same framework used for many apps. |
+| **Extensibility** | Easy to add new features (hooks). |
+| **Inversion of Control** | Framework calls your code, not the opposite. |
+| **Non‑modifiable core** | Core code stays unchanged (Open‑Closed Principle). |
+
+---
+
+## 7. Framework Building Blocks: Template & Hook Methods
+
+| Method Type | Purpose | Variability |
+|-------------|---------|-------------|
+| **Template Method** | Defines skeleton of algorithm (common part) | Fixed |
+| **Hook Method** | Place where subclasses can insert specific behaviour | Variable |
+
+**Analogy:** Template = recipe steps (boil water, brew). Hook = add condiments (sugar or lemon).
+
+---
+
+## 8. How Framework Works (Simple Steps)
+
+1. **Framework provides** skeleton (template methods with hooks).
+2. **You extend** framework by implementing hook methods (your custom logic).
+3. **Framework calls** your code when needed (Inversion of Control).
+4. **Result** – your custom application built on framework.
+
+---
+
+## 9. Simple Java Framework Example (from slides)
+
+### Framework code (cannot be changed)
+
+```java
+// Entry point – fixed
+public class Main {
+    public static void main(String[] args) {
+        Human h = new Human(new Walk());  // client provides hook
+        h.doMove();
+    }
+}
+
+// Hook – abstract class, client must implement
+public abstract class Move {
+    public abstract void action();
+}
+
+// Template – framework logic
+public class Human {
+    private Move move;
+    public Human(Move m) { this.move = m; }
+    public void doMove() { this.move.action(); }  // calls hook
+}
+```
+
+### Client code (customisation)
+
+```java
+public class Walk extends Move {
+    public void action() {
+        System.out.println("Walking...");
+    }
+}
+```
+
+**Explanation:** Framework defines `Move` hook and `Human` template. Client provides `Walk` implementation. Framework calls `action()`.
+
+---
+
+## 10. Real Software Frameworks (from slides)
+
+| Domain | Frameworks |
+|--------|------------|
+| **Web development** | Laravel (PHP), React.js, Angular |
+| **Java development** | Spring MVC, Hibernate, Struts 2 |
+| **.NET** | ASP.NET Core |
+| **Python** | Django, Flask |
+
+---
+
+## 11. Role of Frameworks in Enforcing Architecture (from slides)
+
+Frameworks enforce architecture by:
+
+- **Imposing design structure** – you must follow framework rules.
+- **Using Inversion of Control** – framework decides flow.
+- **Defining constraints** – what you can/cannot change.
+- **Providing ready‑made components** – controllers, repositories, etc.
+- **Acting as “architectural guardians”** – ensures consistency and maintainability.
+
+---
+
+## 12. Architectural Constraints & Frameworks
+
+- Frameworks **implement and enforce** architectural constraints.
+- Example: Spring MVC forces separation into Controller, Service, Repository – a constraint of layered architecture.
+- Constraints = rules that limit design choices (e.g., “no direct database call from Controller”).
+
+---
+
+## 13. Advantages of Frameworks
+
+| Advantage | Why It’s Good |
+|-----------|---------------|
+| **Code reuse** | Don’t reinvent the wheel. |
+| **Design reuse** | Proven patterns. |
+| **Productivity** | Faster development. |
+| **Quality** | Framework code is tested. |
+| **Perspective shift** | Developers write reusable software. |
+
+---
+
+## 14. Disadvantages / Issues
+
+| Disadvantage | Why It’s Bad |
+|--------------|---------------|
+| **Learning curve** | Takes time to learn framework. |
+| **Initial investment** | Setup and configuration overhead. |
+| **Domain expertise needed** | Framework developers must be experts. |
+| **Evolution complexity** | Upgrading framework can break your code. |
+
+---
+
+## 15. How to Identify in Exams
+
+### Exam Keywords
+
+| Keyword | Points to Frameworks |
+|---------|----------------------|
+| “Semi‑complete application” | Definition. |
+| “Inversion of Control” | Key characteristic. |
+| “Template method + hook method” | Building blocks. |
+| “Framework calls your code” | IoC. |
+| “Spring / Hibernate / React” | Examples. |
+
+---
+
+## 16. Comparison – Framework vs Library vs Architecture (Table)
+
+| Aspect | Library | Framework | Architecture |
+|--------|---------|-----------|--------------|
+| **Control** | You call it | It calls you | Not applicable |
+| **Completeness** | Functions | Skeleton | Abstract |
+| **Reusability** | High | High | Conceptual |
+| **Example** | Math library | Spring MVC | Layered |
+
+---
+
+## 17. Viva Questions
+
+| # | Question | Answer |
+|---|----------|--------|
+| 1 | What is a software framework? | Reusable, semi‑complete application skeleton. |
+| 2 | What is Inversion of Control? | Framework controls flow, calls your code. |
+| 3 | What is a hook method? | Place where subclasses insert custom behaviour. |
+| 4 | Give an example of a Java framework. | Spring MVC, Hibernate. |
+| 5 | How does framework differ from library? | Library – you call it; framework calls you. |
+| 6 | What is the role of a template method in framework? | Defines invariant algorithm skeleton. |
+| 7 | Name one benefit of frameworks. | Code reuse, faster development. |
+| 8 | What is a disadvantage? | Learning curve, initial investment. |
+
+---
+
+## 18. Memory Tip
+
+**“Framework = skeleton + hooks”** – skeleton (template) holds shape, hooks let you add meat.
+
+**“Framework calls you”** – remember IoC.
+
+---
+
+## 19. Quick Revision
+
+### Category
+Software Reuse / Architecture
+
+### Problem
+Reinventing the wheel for every project.
+
+### Solution
+Reusable semi‑complete application (framework) with hooks for customisation.
+
+### Key Components
+- Template methods (fixed algorithm)
+- Hook methods (variability points)
+- Inversion of Control
+
+### Advantages
+Reuse, productivity, quality.
+
+### Keywords
+Framework, hook, template method, inversion of control, extensibility, architecture enforcement.
+
+### One‑Line Exam Definition
+*“A reusable semi‑complete application skeleton that controls flow and lets you plug in custom behaviour via hooks.”*
+
+### One‑Line Summary
+**Framework = skeleton + hooks, calls you, not the opposite.**
+
+---
+
+<Callout type="success">
+  **Exam Tip:** Inversion of Control (IoC) is the most important distinguishing feature of frameworks compared to libraries.
+</Callout>

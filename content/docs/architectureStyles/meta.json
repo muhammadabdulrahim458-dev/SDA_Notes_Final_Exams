@@ -1,13 +1,16 @@
 {
-  "title": "Architectural Styles",
+  "title": "Architecture Styles",
   "pages": [
-    "DataFlowArchitecturalStyle",
-    "Batchsequential",
-    "Pipeandfilter",
-    "repository",
-    "blackboard",
+    "index",
+    "---Categories---",
     "hierarchical",
     "distributed",
-    "interaction_oriented"
+    "interaction_oriented",
+    "---Data & Repository Styles---",
+    "DataFlowArchitecturalStyle",
+    "Pipeandfilter",
+    "Batchsequential",
+    "repository",
+    "blackboard"
   ]
 }

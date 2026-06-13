@@ -1,4 +1,4 @@
 {
-  "title": "Behavioral Patterns",
-  "pages": ["Template", "Mediator"]
+  "title": "Behavioral Design Patterns",
+  "pages": ["index", "Template", "Mediator"]
 }
