@@ -1,0 +1,337 @@
+---
+title: Practice Questions
+description: Your first document
+---
+
+# Architectural Style Selection – Case Study Practice
+
+Use these case studies to practice identifying the most suitable architectural style. For each case, you should be able to:
+1. **Identify** the style(s)
+2. **Explain why** that style fits
+3. **List advantages** of using that style
+
+---
+
+## Quick Reference: When to Use Which Style
+
+| Style | Best for | Key Indicators |
+|-------|----------|----------------|
+| **Batch Sequential** | Offline processing of large volumes, strict step order | Nightly payroll, billing, ETL, no user interaction |
+| **Pipe-and-Filter** | Streaming data, incremental processing, concurrent transformations | Unix commands, media transcoding, log processing |
+| **Repository** | Shared central data, multiple independent clients | Database-centric apps, information systems |
+| **Blackboard** | No fixed algorithm, multiple experts contribute, solution emerges | Speech recognition, intrusion detection, AI systems |
+| **Main-Subroutine** | Simple procedural decomposition, top-down design | Legacy systems, small programs |
+| **Master-Slave** | Fault tolerance, parallel computation, replication | Database replication, load balancing, MapReduce |
+| **Layered** | Separation of concerns, business apps with UI, logic, database | Web apps, enterprise systems |
+| **Virtual Machine** | Platform independence, isolation, running multiple OS | Java JVM, .NET CLR, VMware |
+| **Client-Server** | Remote service access, centralised server | Web browsing, email, file sharing |
+| **Multi-tier (3-tier)** | Scalable business apps, separation of UI, logic, data | E-commerce, banking portals |
+| **SOA** | Reusable business services, B2B integration | Payment service, weather API |
+| **Middleware** | Heterogeneous systems need to communicate | Message queuing, RPC, CORBA |
+| **MVC** | Interactive apps with multiple views of same data | Web frameworks, desktop GUI |
+| **PAC** | Distributed interactive systems, agent-based | Robotics, multi-window IDEs |
+| **CBSE** | Reuse existing components, “buy don’t build” | Systems with COTS components |
+
+---
+
+## Case Study 1: University Payroll System
+
+**Scenario:** A university needs to process payroll for 10,000 employees every month. The system reads employee time sheets, calculates salaries based on various rules (overtime, deductions, taxes), prints paychecks, and generates tax reports. All data is processed in a single overnight batch. No user interaction is needed during processing.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Batch Sequential<br/>
+**Why:** Data processed in fixed order; each step must finish before next; no user interaction; large volume as whole batch.<br/>
+**Advantages:** Simple to understand, independent steps, reliable, good for large data, easy checkpoint restart.
+
+</details>
+
+---
+
+## Case Study 2: Real-Time Credit Card Fraud Detection
+
+**Scenario:** A bank wants a system that monitors credit card transactions in real time. As each transaction occurs, it must pass through several checks: location verification, spending pattern analysis, merchant blacklist, etc. The system should process transactions incrementally and flag suspicious ones immediately. Different checks can run concurrently.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Pipe-and-Filter<br/>
+**Why:** Transactions flow as stream; multiple filters run concurrently; low latency required; filters independent.<br/>
+**Advantages:** Concurrency, incremental output, low coupling, high reusability.
+
+</details>
+
+---
+
+## Case Study 3: Hospital Patient Records System
+
+**Scenario:** A hospital wants a centralised system where different departments (admission, pharmacy, billing, lab) can access and update patient records. All departments must see the same up-to-date information. The system must ensure data integrity and provide access control.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Repository (Data-Centered)<br/>
+**Why:** Multiple independent components need shared data; central data store ensures single source of truth; data integrity critical.<br/>
+**Advantages:** Data integrity, consistent view, reduces duplication, scalable, centralised security.
+
+</details>
+
+---
+
+## Case Study 4: Voice-Controlled Smart Home Assistant
+
+**Scenario:** A smart home system listens for voice commands. The system must process audio to recognise words, interpret intent, execute actions (turn on lights, adjust thermostat), and respond. No single algorithm can do it all; different experts (speech recognition, natural language processing, device control) contribute. The solution emerges incrementally.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Blackboard (Active Repository)<br/>
+**Why:** No fixed algorithm; solution emerges incrementally; multiple knowledge sources; data changes trigger processing.<br/>
+**Advantages:** Scalable, knowledge sources run in parallel, reusable, supports experimentation, works with incomplete data.
+
+</details>
+
+---
+
+## Case Study 5: E-Commerce Website (Online Store)
+
+**Scenario:** An online store expects millions of users. The system has a web frontend (product browsing, cart), business logic (pricing, discounts, inventory), and database (products, orders). The website must be scalable, maintainable, and secure. Different teams work on UI, logic, and database.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Layered (3-tier)<br/>
+**Why:** Clear separation: presentation, business logic, data; layers only talk to adjacent; scalable; team-friendly.<br/>
+**Advantages:** Separation of concerns, portability, reusability, scalability, security.
+
+</details>
+
+---
+
+## Case Study 6: Cross-Platform Mobile App (Write Once, Run Anywhere)
+
+**Scenario:** A company wants to develop an app that runs on Android, iOS, and Windows without rewriting code. The app should be isolated from underlying OS differences.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Virtual Machine (Process VM – JVM/.NET CLR)<br/>
+**Why:** Need platform independence; VM abstracts OS differences; isolation.<br/>
+**Advantages:** Portability (WORA), isolation, security, garbage collection, large ecosystem.
+
+</details>
+
+---
+
+## Case Study 7: Server Consolidation (Running Multiple OS on One Physical Server)
+
+**Scenario:** A company has several legacy applications that each require different operating systems (Windows Server 2012, Ubuntu 18.04, Red Hat 7). They want to run all on a single physical machine to save costs, while keeping them isolated.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Virtual Machine (System VM – Hypervisor)<br/>
+**Why:** Run multiple different OS on same hardware; isolation required.<br/>
+**Advantages:** Server consolidation, isolation, disaster recovery snapshots, flexibility, resource overcommitment.
+
+</details>
+
+---
+
+## Case Study 8: Database Replication for High Availability
+
+**Scenario:** A social media app needs a database that can handle millions of read requests per second. Writes are much fewer. If the primary database fails, the system should continue working.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Master-Slave<br/>
+**Why:** Master handles writes, slaves handle reads; replication for fault tolerance; parallel reads.<br/>
+**Advantages:** Fault tolerance, scalability (add slaves), reliability, performance, master focused on writes.
+
+</details>
+
+---
+
+## Case Study 9: Payment Gateway Service (Used by Multiple Merchants)
+
+**Scenario:** A company builds a payment processing service that can be used by thousands of online merchants. Each merchant integrates via API. The service handles credit card charging, refunds, and fraud checks. It must be reusable, loosely coupled, and platform-independent.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Service-Oriented Architecture (SOA)<br/>
+**Why:** Reusable business service; multiple consumers; loosely coupled; standard contracts.<br/>
+**Advantages:** Reusability, loose coupling, interoperability, business alignment, scalability.
+
+</details>
+
+---
+
+## Case Study 10: Building a New System from Pre-existing Components
+
+**Scenario:** A company needs an inventory management system. They already have a barcode scanning component (purchased), a reporting library (open source), and a database connector (in-house). They want to assemble these parts quickly rather than coding from scratch.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Component-Based Software Architecture (CBSE)<br/>
+**Why:** "Buy, don't build" philosophy; existing COTS components; assemble rather than code.<br/>
+**Advantages:** Reusability, faster time to market, lower cost, increased reliability, easy maintenance.
+
+</details>
+
+---
+
+## Case Study 11: Modern Web Application with Multiple Views (Desktop, Mobile, Tablet)
+
+**Scenario:** A news website displays articles. The same article data needs to be shown differently on desktop (full layout), tablet (two columns), and mobile (single column). The system also handles user comments and login. Separate teams work on frontend and backend.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Model-View-Controller (MVC)<br/>
+**Why:** Multiple views of same data; separation of concerns; web frameworks built for this.<br/>
+**Advantages:** Multiple views synchronised, pluggable interfaces, clear separation, many frameworks available.
+
+</details>
+
+---
+
+## Case Study 12: Legacy System Modernisation with Message Queue
+
+**Scenario:** A bank has old mainframe systems (COBOL), modern Java applications, and a new mobile app. They need all to communicate reliably. They don’t want to rewrite the mainframe. They want asynchronous, fault-tolerant message passing.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Middleware (Message-Oriented Middleware – MOM)<br/>
+**Why:** Heterogeneous systems need to communicate; middleware acts as bridge; asynchronous message passing.<br/>
+**Advantages:** Simplifies distributed communication, heterogeneous support, scalability, loose coupling, reliable delivery.
+
+</details>
+
+---
+
+## Case Study 13: Robotics Control System with Multiple Sensors and Actuators
+
+**Scenario:** A robot has multiple independent subsystems: camera, LIDAR, motor control, voice recognition. Each subsystem has its own data and UI for debugging. They must coordinate but can operate semi-autonomously. The system should be able to add new sensors easily.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Presentation-Abstraction-Control (PAC)<br/>
+**Why:** Distributed interactive system; multiple semi-autonomous agents; each agent has its own UI/data/control; hierarchical.<br/>
+**Advantages:** Supports distribution, hierarchical control, local autonomy, scalability, overcomes MVC limitations.
+
+</details>
+
+---
+
+## Case Study 14: Simple Calculator Program (Command Line)
+
+**Scenario:** A student needs to write a small program that takes two numbers and an operator, performs the calculation, and prints the result. The program is simple, no GUI, no concurrency, no network.
+
+**Questions:**
+1. Which architectural style is most suitable?
+2. Why did you choose it?
+3. What are the advantages?
+
+<details>
+<summary>Show Answer</summary>
+
+**Style:** Main-Subroutine (Procedural)<br/>
+**Why:** Simple program; main program calls subroutines; no need for complex architecture.<br/>
+**Advantages:** Simple to understand, subroutines reusable, easy to test, low overhead, appropriate for small systems.
+
+</details>
+
+---
+
+## Summary Checklist for Exam
+
+When given a case study, ask yourself:
+
+1. **Is data processed in strict steps?** → Batch Sequential
+2. **Is data streaming incrementally?** → Pipe-and-Filter
+3. **Is there a central shared data store?** → Repository
+4. **Do multiple experts contribute to an emerging solution?** → Blackboard
+5. **Is fault tolerance / parallel processing needed?** → Master-Slave
+6. **Need separation of UI, logic, database?** → Layered / MVC / 3-tier
+7. **Need platform independence?** → Virtual Machine
+8. **Client requests service from server?** → Client-Server
+9. **Reusable business service for many consumers?** → SOA
+10. **Heterogeneous systems need to communicate?** → Middleware
+11. **Assembling from pre-built parts?** → CBSE
+12. **Distributed agents with own UI/data?** → PAC
+13. **Simple small program?** → Main-Subroutine
+
+<Callout type="success">
+  **Exam Tip:** Always justify your choice with keywords from the case study. Mention advantages specific to the scenario (e.g., "low latency because incremental processing").
+</Callout>
